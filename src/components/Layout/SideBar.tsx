@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-// import { LayoutDashboard, Users } from 'lucide-react';
+import { LayoutDashboard, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Box, List, ListItem, ListItemIcon, ListItemText, Paper } from '@mui/material';
 
@@ -11,8 +11,8 @@ const Sidebar = () => {
   const { t } = useTranslation();
 
   const menuItems = [
-    { path: '/',  label: t('dashboard') },
-    { path: '/users', label: t('userManagement') },
+    { path: '/',  label: t('dashboard'), icon: <LayoutDashboard /> },
+    { path: '/users', label: t('userManagement'), icon: <Users /> },
   ];
 
   return (
@@ -41,7 +41,7 @@ const Sidebar = () => {
                 },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 40 }}>1</ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.label} />
             </ListItem>
           ))}

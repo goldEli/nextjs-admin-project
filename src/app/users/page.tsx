@@ -18,17 +18,9 @@ import {
   IconButton,
   InputAdornment,
 } from '@mui/material';
-// import { Search, Edit, Trash2 } from 'lucide-react';
-// import { mockUsers } from '@/lib/mockData';
-import { Search, Edit, Delete } from '@mui/icons-material';
-import { mockUsers } from '@/lib/mockData';
+import { Search, Edit, Trash2 } from 'lucide-react';
+import { fetchUsers } from '@/api/users/users';
 
-const fetchUsers = async () => {
-  // Simulate API call
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(mockUsers), 1000);
-  });
-};
 
 export default function Users() {
   const { t } = useTranslation();
@@ -96,7 +88,7 @@ export default function Users() {
                       <Edit  />
                     </IconButton>
                     <IconButton size="small" color="error">
-                      <Delete  />
+                      <Trash2  />
                     </IconButton>
                   </TableCell>
                 </TableRow>
