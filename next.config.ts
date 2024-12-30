@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         source: '/api/:path*', // 捕获所有 /api 开头的请求
         destination: `https://stg-boss-web.weex.tech/:path*`, // 转发到目标服务器，避免重复的 /api
       },
+      {
+        source: '/assets/:path*', // 捕获所有 /api 开头的请求
+        destination: `https://stg-boss-web.weex.tech/assets/:path*`, // 转发到目标服务器，避免重复的 /api
+      },
     ]
   }
 };

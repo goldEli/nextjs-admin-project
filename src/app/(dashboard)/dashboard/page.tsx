@@ -1,4 +1,5 @@
 import { getUserInfo } from "@/api/users/users";
+import IframeBox from "@/components/IframeBox";
 import { use } from "react";
 
 export default function Home() {
@@ -6,5 +7,5 @@ export default function Home() {
 
   console.log(data)
 
-  return <p>{data.id}</p>
+  return <IframeBox src={"/todo/config/page"}/>
 }

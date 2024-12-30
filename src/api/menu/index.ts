@@ -18,3 +18,8 @@ export const getMenu = () => {
     const res = instance.get('/api')
     return res
 }
+
+export const getPageByPath = (path: string) => {
+    const res = instance.get(`/api/${path}`)
+    return res
+}

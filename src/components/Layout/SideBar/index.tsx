@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { LayoutDashboard, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Box, List, ListItem, ListItemIcon, ListItemText, Paper } from '@mui/material';
-import { Menu } from './Menu';
+import Menu from './Menu';
 
 const Sidebar = () => {
   const pathname = usePathname();

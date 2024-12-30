@@ -14,7 +14,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <SideBar />
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         <Header />
-        <Box component="main" sx={{ flex: 1, p: 3 }}>
+        <Box component="main" sx={{ flex: 1 }}>
           {children}
         </Box>
       </Box>
