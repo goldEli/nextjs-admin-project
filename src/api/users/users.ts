@@ -1,5 +1,6 @@
 import request from "@/lib/http/request";
 import { User } from "@/type/users";
+import urls from "../urls";
 
 const mockUsers: User[] = [
     {
@@ -25,14 +26,29 @@ const mockUsers: User[] = [
     },
 ];
 
+
 export const fetchUsers = async () => {
-    // Simulate API call
+    // Simulate API call /users/list
     return new Promise((resolve) => {
         setTimeout(() => resolve(mockUsers), 1000);
     });
 };
 
-export const getUserInfo = async () => {
-    const response = await request.get<User>('/users/info');
+
+export const getSystemInfo = async () => {
+    const response = await request.get<User>('/system/info');
     return response.data;
+};
+
+export const getUserInfo = async (userId: number): Promise<User> => {
+    console.log('fetchUsers', userId, urls.users);
+    return new Promise((resolve) => {
+        setTimeout(() => resolve({
+            id: userId,
+            name: 'John Doe',
+            email: 'john@example.com',
+            role: 'Admin',
+            status: 'Active',
+        }), 1000);
+    });
 };

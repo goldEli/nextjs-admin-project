@@ -13,6 +13,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { Globe, User } from 'lucide-react';
+import UserInfo from '../UserInfo';
 
 
 const Header = () => {
@@ -49,12 +50,7 @@ const Header = () => {
             <Avatar sx={{ bgcolor: 'primary.main' }}>
               <User />
             </Avatar>
-            <Box>
-              <Typography variant="subtitle2">Admin User</Typography>
-              <Typography variant="caption" color="text.secondary">
-                admin@example.com
-              </Typography>
-            </Box>
+            <UserInfo />
           </Box>
         </Box>
       </Toolbar>
