@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { isClient } from '..';
 
 export interface HttpResponse<T = any> {
   code: number;
@@ -26,9 +27,11 @@ class HttpClient {
     this.instance.interceptors.request.use(
       (config) => {
         // 在此处添加通用逻辑，例如添加 Token
-        const token = localStorage.getItem('token');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+        if (isClient()) {
+          const token = localStorage?.getItem('token');
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
         }
         return config;
       },
@@ -45,7 +48,7 @@ class HttpClient {
       },
       (error) => {
         // 处理错误逻辑
-        console.error('HTTP Error:', error.response?.data || error.message);
+        console.log('HTTP Error:', error.response?.data || error.message);
         return Promise.reject(error);
       }
     );
@@ -69,5 +72,6 @@ class HttpClient {
 }
 
 // const http = new HttpClient(import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000');
-const request = new HttpClient('http://localhost:3000');
+console.log(process.env.NEXT_PUBLIC_BASE_URL, 'process.env.NEXT_PUBLIC_BASE_URL')
+const request = new HttpClient(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000');
 export default request;

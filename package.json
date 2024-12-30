@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo --port 9090",
+    "dev": "env-cmd -f .env.development next dev --turbo --port 9090",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,6 +17,8 @@
     "@mui/material-nextjs": "^6.3.0",
     "@tanstack/react-query": "^5.62.10",
     "axios": "^1.7.9",
+    "env-cmd": "^10.1.0",
+    "htmlparser2": "^10.0.0",
     "i18next": "^24.2.0",
     "lucide-react": "^0.469.0",
     "next": "15.1.2",

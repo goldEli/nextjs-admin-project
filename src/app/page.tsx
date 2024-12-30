@@ -1,10 +1,5 @@
-import { getUserInfo } from "@/api/users/users";
-import { use } from "react";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const data = use(getUserInfo(11111111111));
-
-  console.log(data)
-
-  return <p>{data.id}</p>
+  redirect('/dashboard');
 }

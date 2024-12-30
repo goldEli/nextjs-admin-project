@@ -4,3 +4,8 @@
 // export function cn(...inputs: ClassValue[]) {
 //   return twMerge(clsx(inputs));
 // }
+
+// is client in nextjs
+export const isClient = () => {
+    return typeof window !== 'undefined'
+};
