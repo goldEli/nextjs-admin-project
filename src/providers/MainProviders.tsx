@@ -1,7 +1,7 @@
 "use client";
 
 import { I18nextProvider } from "react-i18next";
-import i18n from "@/lib/i18n/config";
+import i18n from "@/i18n/config";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import ReactQueryProvider from "./ReactQueryProvider";
 

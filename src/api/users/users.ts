@@ -1,4 +1,4 @@
-import request from "@/lib/http/request";
+import request from "@/utils/http/request";
 import { User } from "@/type/users";
 import urls from "../urls";
 
