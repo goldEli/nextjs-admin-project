@@ -1,0 +1,15 @@
+{
+  "translations.dashboard": "Dashboard",
+  "translations.userManagement": "User Management",
+  "translations.welcome": "Welcome",
+  "translations.totalUsers": "Total Users",
+  "translations.activeUsers": "Active Users",
+  "translations.newUsers": "New Users",
+  "translations.search": "Search",
+  "translations.filter": "Filter",
+  "translations.name": "Name",
+  "translations.email": "Email",
+  "translations.role": "Role",
+  "translations.status": "Status",
+  "translations.actions": "Actions"
+}

@@ -1,0 +1,15 @@
+{
+  "translations.dashboard": "仪表板",
+  "translations.userManagement": "用户管理",
+  "translations.welcome": "欢迎",
+  "translations.totalUsers": "用户总数",
+  "translations.activeUsers": "活跃用户",
+  "translations.newUsers": "新用户",
+  "translations.search": "搜索",
+  "translations.filter": "筛选",
+  "translations.name": "姓名",
+  "translations.email": "邮箱",
+  "translations.role": "角色",
+  "translations.status": "状态",
+  "translations.actions": "操作"
+}
