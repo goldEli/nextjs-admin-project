@@ -22,7 +22,7 @@ const useMenuStore = create<MenuStore & MenuStoreActions>()(
             selectedMenuList: [],
             setSelectedMenuItem: (item: MenuItem) => {
                 set({ selectedMenuItem: item });
-                if (!get().selectedMenuList.some((i) => i.id === item.id)) {
+                if (!get().selectedMenuList.some((i) => i.link === item.link)) {
                     set({ selectedMenuList: [item, ...get().selectedMenuList] });
                 }
             },
