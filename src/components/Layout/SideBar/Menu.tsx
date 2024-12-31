@@ -9,12 +9,15 @@ import {
 } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { t } from "i18next";
-import { useMenu } from "./useMenu";
+import { useMenuData } from "./useMenuData";
 import { MenuItem } from "@/type/menu";
+import useMenuStore from "@/store/sideBar/menuStore";
 // import * as htmlparser2 from "htmlparser2";
 
 const VerticalMenu = () => {
-  const { menuData, toggleMenu } = useMenu();
+  const { menuData, toggleMenu } = useMenuData();
+
+  const { setSelectedMenuItem } = useMenuStore();
 
   const handleClick = (currentItem: MenuItem) => {
     // setOpen(!open);
@@ -36,7 +39,7 @@ const VerticalMenu = () => {
           <List component="div" disablePadding>
             {item.children?.map((child) => {
               return (
-                <ListItem key={child.id} sx={{ pl: 4 }}>
+                <ListItem onClick={() => setSelectedMenuItem(child)} key={child.id} sx={{ pl: 4 }}>
                   <ListItemText sx={{ cursor: "pointer" }} primary={child.title} />
                 </ListItem>
               );

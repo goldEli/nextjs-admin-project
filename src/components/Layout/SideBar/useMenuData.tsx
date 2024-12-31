@@ -10,7 +10,7 @@ function getBodyString(htmlString: string) {
   return match ? match[1] : "";
 }
 
-export function useMenu() {
+export function useMenuData() {
   const [menuData, setMenuData] = useState<MenuItem[]>([]);
 
   useEffect(() => {
