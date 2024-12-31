@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
   Collapse,
   Divider,
@@ -28,20 +28,20 @@ const VerticalMenu = () => {
   const MenuListEle = menuData.map((item) => {
     return (
       <Box key={item.id}>
-        <ListItem
+        <ListItemButton
           sx={{ cursor: "pointer" }}
           onClick={() => handleClick(item)}
         >
           <ListItemText primary={item.title} />
           {item.open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
+        </ListItemButton>
         <Collapse in={item.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {item.children?.map((child) => {
               return (
-                <ListItem onClick={() => setSelectedMenuItem(child)} key={child.id} sx={{ pl: 4 }}>
+                <ListItemButton onClick={() => setSelectedMenuItem(child)} key={child.id} sx={{ pl: 4 }}>
                   <ListItemText sx={{ cursor: "pointer" }} primary={child.title} />
-                </ListItem>
+                </ListItemButton>
               );
             })}
           </List>
