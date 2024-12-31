@@ -1,40 +1,56 @@
-// components/VerticalMenu.js
-
-import React, { useState } from "react";
-import { List, ListItem, ListItemText, Collapse, Divider } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Collapse,
+  Divider,
+  Box,
+} from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
+import { t } from "i18next";
+import { useMenu } from "./useMenu";
+import { MenuItem } from "@/type/menu";
+// import * as htmlparser2 from "htmlparser2";
 
 const VerticalMenu = () => {
-  const [open, setOpen] = useState(false);
+  const { menuData, toggleMenu } = useMenu();
 
-  const handleClick = () => {
-    setOpen(!open);
+  const handleClick = (currentItem: MenuItem) => {
+    // setOpen(!open);
+    toggleMenu(currentItem.id);
   };
+
+
+  const MenuListEle = menuData.map((item) => {
+    return (
+      <Box key={item.id}>
+        <ListItem
+          sx={{ cursor: "pointer" }}
+          onClick={() => handleClick(item)}
+        >
+          <ListItemText primary={item.title} />
+          {item.open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={item.open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {item.children?.map((child) => {
+              return (
+                <ListItem key={child.id} sx={{ pl: 4 }}>
+                  <ListItemText sx={{ cursor: "pointer" }} primary={child.title} />
+                </ListItem>
+              );
+            })}
+          </List>
+        </Collapse>
+        <Divider />
+      </Box>
+    );
+  });
 
   return (
     <List component="nav" aria-labelledby="nested-list-subheader">
-      <ListItem onClick={handleClick}>
-        <ListItemText primary="Menu Item 1" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem sx={{ pl: 4 }}>
-            <ListItemText primary="Sub Item 1" />
-          </ListItem>
-          <ListItem sx={{ pl: 4 }}>
-            <ListItemText primary="Sub Item 2" />
-          </ListItem>
-        </List>
-      </Collapse>
-      <Divider />
-      <ListItem>
-        <ListItemText primary="Menu Item 2" />
-      </ListItem>
-      <Divider />
-      <ListItem>
-        <ListItemText primary="Menu Item 3" />
-      </ListItem>
+      {MenuListEle}
     </List>
   );
 };
