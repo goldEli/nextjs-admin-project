@@ -16,7 +16,7 @@ export default function HeaderTabs() {
   };
 
   return (
-    <Box sx={{ bgcolor: "background.paper" }}>
+    <Box sx={{ bgcolor: "background.paper", width: "100%" }}>
       <Tabs
         value={selectedMenuId}
         onChange={handleChange}

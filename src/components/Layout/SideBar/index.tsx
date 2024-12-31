@@ -11,9 +11,9 @@ const Sidebar = () => {
   const { t } = useTranslation();
 
   return (
-    <Paper
+    <Box
       sx={{
-        width: 240,
+        width: '300px',
         flexShrink: 0,
         height: '100vh',
         borderRadius: 0,
@@ -25,7 +25,7 @@ const Sidebar = () => {
       <Box sx={{ p: 2 }}>
         <Menu />
       </Box>
-    </Paper>
+    </Box>
   );
 };
 
