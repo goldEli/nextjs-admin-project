@@ -14,6 +14,7 @@ const Sidebar = () => {
     <Paper
       sx={{
         width: 240,
+        flexShrink: 0,
         height: '100vh',
         borderRadius: 0,
         borderRight: '1px solid',

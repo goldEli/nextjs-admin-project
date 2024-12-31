@@ -13,7 +13,8 @@ import {
   MenuItem,
 } from '@mui/material';
 import { Globe, User } from 'lucide-react';
-import UserInfo from '../UserInfo';
+import UserInfo from '@/components/UserInfo';
+import HeaderTabs from './HeaderTabs';
 
 
 const Header = () => {
@@ -54,6 +55,7 @@ const Header = () => {
           </Box>
         </Box>
       </Toolbar>
+      <HeaderTabs />
     </AppBar>
   );
 };
