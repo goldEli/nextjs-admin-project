@@ -1,89 +1,112 @@
 "use client";
+import Link from "next/link";
+import {
+  Grid,
+  Box,
+  Card,
+  Stack,
+  Typography,
+  ThemeProvider,
+  CssBaseline,
+} from "@mui/material";
+import AuthLogin from "./AuthLogin";
+import PageContainer from "@/components/container/PageContainer";
+import theme from "@/utils/theme";
+import { baselightTheme } from "@/utils/theme/DefaultColors";
 
-import { useState } from "react";
-import { TextField, Button, Container, Typography, Box } from "@mui/material";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { login } from "@/api/login";
-import { routePage } from "@/config/routePage";
-import { useJump } from "@/utils/jump";
-
-interface LoginParams {
-  username: string;
-  password: string;
-}
-
-export default function Login() {
-    const { jumpTo } = useJump();
-
-  // 定义 Zod 验证模式
-  const loginSchema = z.object({
-    username: z.string().min(1, "Username is required"),
-    password: z.string().min(6, "Password must be at least 6 characters long"),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginParams>({
-    resolver: zodResolver(loginSchema),
-  });
-
-  const onSubmit = async (data: LoginParams) => {
-    // 处理登录逻辑
-    console.log("Logged in with:", data);
-    // 在这里可以执行登录 API 请求
-    const res = await login(data);
-    console.log(res);
-    jumpTo(routePage.home);
-  };
-
-  return (
-    <Container maxWidth="xs">
+const Login2 = () => {
+  const mainContent = (
+    <PageContainer title="Login" description="this is Login page">
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          marginTop: 4,
+          position: "relative",
+          "&:before": {
+            content: '""',
+            background: "radial-gradient(#d2f1df, #d3d7fa, #bad8f4)",
+            backgroundSize: "400% 400%",
+            animation: "gradient 15s ease infinite",
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            opacity: "0.3",
+          },
         }}
       >
-        <Typography variant="h5">Login</Typography>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          style={{ width: "100%", marginTop: 2 }}
+        <Grid
+          container
+          spacing={0}
+          justifyContent="center"
+          sx={{ height: "100vh" }}
         >
-          <TextField
-            label="Username"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            {...register("username")}
-            error={!!errors.username}
-            helperText={errors.username?.message}
-          />
-          <TextField
-            label="Password"
-            variant="outlined"
-            type="password"
-            fullWidth
-            margin="normal"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ marginTop: 2 }}
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            lg={4}
+            xl={3}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
           >
-            Login
-          </Button>
-        </form>
+            <Card
+              elevation={9}
+              sx={{ p: 4, zIndex: 1, width: "100%", maxWidth: "500px" }}
+            >
+              <Box display="flex" alignItems="center" justifyContent="center">
+                {/* <Logo /> */}
+                logo
+              </Box>
+              <AuthLogin
+                subtext={
+                  <Typography
+                    variant="subtitle1"
+                    textAlign="center"
+                    color="textSecondary"
+                    mb={1}
+                  >
+                    Your Social Campaigns
+                  </Typography>
+                }
+                subtitle={
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    justifyContent="center"
+                    mt={3}
+                  >
+                    <Typography
+                      color="textSecondary"
+                      variant="h6"
+                      fontWeight="500"
+                    >
+                      New to Modernize?
+                    </Typography>
+                    <Typography
+                      component={Link}
+                      href="/authentication/register"
+                      fontWeight="500"
+                      sx={{
+                        textDecoration: "none",
+                        color: "primary.main",
+                      }}
+                    >
+                      Create an account
+                    </Typography>
+                  </Stack>
+                }
+              />
+            </Card>
+          </Grid>
+        </Grid>
       </Box>
-    </Container>
+    </PageContainer>
   );
-}
+
+  return (
+    <ThemeProvider theme={baselightTheme}>
+      <CssBaseline />
+      {mainContent}
+    </ThemeProvider>
+  );
+};
+export default Login2;
