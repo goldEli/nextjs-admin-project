@@ -17,7 +17,7 @@ export default function ColorModeSelect(props: SelectProps) {
       SelectDisplayProps={
         {
           // @ts-ignore
-          // 'data-screenshot': 'toggle-mode',
+          'data-screenshot': 'toggle-mode',
         }
       }
       {...props}

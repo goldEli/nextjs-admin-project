@@ -3,7 +3,7 @@ import { useMediaQuery, Box, Drawer } from "@mui/material";
 // import { Upgrade } from "./Updrade";
 // import { Sidebar, Logo } from "react-mui-sidebar";
 import Menu from "./Menu";
-import { scrollbarStyles } from "@/style/scrollbar";
+// import { scrollbarStyles } from "@/style/scrollbar";
 
 interface ItemType {
   isMobileSidebarOpen: boolean;
@@ -19,7 +19,6 @@ const MSidebar = () => {
 
   // Custom CSS for short scrollbar
 
-
   // lgUp is true when the screen is larger than lg
   // if (lgUp) {
   return (
@@ -27,10 +26,18 @@ const MSidebar = () => {
       sx={{
         width: sidebarWidth,
         flexShrink: 0,
-        ...scrollbarStyles,
+        // ...scrollbarStyles,
         height: "100vh",
         overflowY: "auto",
         backgroundColor: "background.default",
+        "&::-webkit-scrollbar": {
+          width: "7px",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "grey",
+          // backgroundColor: "#6B6B6B",
+          borderRadius: "15px",
+        },
       }}
     >
       <Menu />
