@@ -3,7 +3,7 @@ import { useMediaQuery, Box, Drawer } from "@mui/material";
 // import { Upgrade } from "./Updrade";
 // import { Sidebar, Logo } from "react-mui-sidebar";
 import Menu from "./Menu";
-// import { scrollbarStyles } from "@/style/scrollbar";
+import { scrollbarStyles } from "@/style/scrollbar";
 
 interface ItemType {
   isMobileSidebarOpen: boolean;
@@ -26,18 +26,32 @@ const MSidebar = () => {
       sx={{
         width: sidebarWidth,
         flexShrink: 0,
-        // ...scrollbarStyles,
+        ...scrollbarStyles,
         height: "100vh",
         overflowY: "auto",
         backgroundColor: "background.default",
-        "&::-webkit-scrollbar": {
-          width: "7px",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "grey",
-          // backgroundColor: "#6B6B6B",
-          borderRadius: "15px",
-        },
+        // '&::-webkit-scrollbar': {
+        //   width: 8,
+        // },
+        // '&::-webkit-scrollbar-thumb': {
+        //   backgroundColor: '#888',
+        //   borderRadius: 4,
+        // },
+        // '&::-webkit-scrollbar-thumb:hover': {
+        //   backgroundColor: '#555',
+        // },
+        // '&::-webkit-scrollbar-track': {
+        //   backgroundColor: '#f1f1f1',
+        //   borderRadius: 4,
+        // },
+        // "&::-webkit-scrollbar": {
+        //   width: "7px",
+        // },
+        // "&::-webkit-scrollbar-thumb": {
+        //   backgroundColor: "grey",
+        //   // backgroundColor: "#6B6B6B",
+        //   borderRadius: "15px",
+        // },
       }}
     >
       <Menu />
