@@ -29,9 +29,9 @@ export default function AppTheme(props: AppThemeProps) {
     return disableCustomTheme
       ? {}
       : createTheme({
-        //   palette: {
-        //     mode: "light",
-        //   },
+          palette: {
+            // mode: "dark",
+          },
           // For more details about CSS variables configuration, see https://mui.com/material-ui/customization/css-theme-variables/configuration/
           cssVariables: {
             colorSchemeSelector: "data-mui-color-scheme",
