@@ -24,7 +24,6 @@ const VerticalMenu = () => {
     toggleMenu(currentItem.id);
   };
 
-
   const MenuListEle = menuData.map((item) => {
     return (
       <Box key={item.id}>
@@ -39,8 +38,15 @@ const VerticalMenu = () => {
           <List component="div" disablePadding>
             {item.children?.map((child) => {
               return (
-                <ListItemButton onClick={() => setSelectedMenuItem(child)} key={child.id} sx={{ pl: 4 }}>
-                  <ListItemText sx={{ cursor: "pointer" }} primary={child.title} />
+                <ListItemButton
+                  onClick={() => setSelectedMenuItem(child)}
+                  key={child.id}
+                  sx={{ pl: 4 }}
+                >
+                  <ListItemText
+                    sx={{ cursor: "pointer" }}
+                    primary={child.title}
+                  />
                 </ListItemButton>
               );
             })}
@@ -52,9 +58,11 @@ const VerticalMenu = () => {
   });
 
   return (
-    <List component="nav" aria-labelledby="nested-list-subheader">
-      {MenuListEle}
-    </List>
+    <Box sx={{ height: "100%", width: "100%" }}>
+      <List component="nav" aria-labelledby="nested-list-subheader">
+        {MenuListEle}
+      </List>
+    </Box>
   );
 };
 

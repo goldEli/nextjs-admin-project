@@ -15,6 +15,7 @@ import {
 import { Globe, User } from 'lucide-react';
 import UserInfo from '@/components/UserInfo';
 import HeaderTabs from './HeaderTabs';
+import ColorModeSelect from './ColorModeSelect';
 
 
 const Header = () => {
@@ -47,6 +48,7 @@ const Header = () => {
             <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
             <MenuItem onClick={() => handleLanguageChange('zh')}>中文</MenuItem>
           </Menu>
+          <ColorModeSelect />
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Avatar sx={{ bgcolor: 'primary.main' }}>
               <User />

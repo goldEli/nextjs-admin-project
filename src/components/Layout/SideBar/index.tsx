@@ -1,32 +1,87 @@
-'use client';
+import { useMediaQuery, Box, Drawer } from "@mui/material";
+// import SidebarItems from "./SidebarItems";
+// import { Upgrade } from "./Updrade";
+// import { Sidebar, Logo } from "react-mui-sidebar";
+import Menu from "./Menu";
+import { scrollbarStyles } from "@/style/scrollbar";
 
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { LayoutDashboard, Users } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
-import { Box, List, ListItem, ListItemIcon, ListItemText, Paper } from '@mui/material';
-import Menu from './Menu';
+interface ItemType {
+  isMobileSidebarOpen: boolean;
+  onSidebarClose: (event: React.MouseEvent<HTMLElement>) => void;
+  isSidebarOpen: boolean;
+}
 
-const Sidebar = () => {
-  const { t } = useTranslation();
+const MSidebar = () => {
+  const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up("lg"));
+  console.log(lgUp, "lgUp");
 
+  const sidebarWidth = "270px";
+
+  // Custom CSS for short scrollbar
+
+
+  // lgUp is true when the screen is larger than lg
+  // if (lgUp) {
   return (
     <Box
       sx={{
-        width: '300px',
+        width: sidebarWidth,
         flexShrink: 0,
-        height: '100vh',
-        borderRadius: 0,
-        borderRight: '1px solid',
-        borderColor: 'divider',
-        overflowY: 'auto'
+        ...scrollbarStyles,
+        height: "100vh",
+        overflowY: "auto",
+        backgroundColor: "background.default",
       }}
     >
-      <Box sx={{ p: 2 }}>
-        <Menu />
-      </Box>
+      <Menu />
     </Box>
   );
+  // }
+
+  // return (
+  //   <Drawer
+  //     anchor="left"
+  //     open={isMobileSidebarOpen}
+  //     onClose={onSidebarClose}
+  //     variant="temporary"
+  //     PaperProps={{
+  //       sx: {
+  //         boxShadow: (theme) => theme.shadows[8],
+  //         ...scrollbarStyles,
+  //       },
+  //     }}
+  //   >
+  //     {/* ------------------------------------------- */}
+  //     {/* Sidebar Box */}
+  //     {/* ------------------------------------------- */}
+  //     <Box px={2}>
+  //       {/* <Sidebar
+  //         width={"270px"}
+  //         collapsewidth="80px"
+  //         isCollapse={false}
+  //         mode="light"
+  //         direction="ltr"
+  //         themeColor="#5d87ff"
+  //         themeSecondaryColor="#49beff"
+  //         showProfile={false}
+  //       > */}
+  //       {/* ------------------------------------------- */}
+  //       {/* Logo */}
+  //       {/* ------------------------------------------- */}
+  //       {/* <Logo img="/images/logos/dark-logo.svg" /> */}
+  //       {/* ------------------------------------------- */}
+  //       {/* Sidebar Items */}
+  //       {/* ------------------------------------------- */}
+  //       {/* <SidebarItems />
+  //         <Upgrade /> */}
+  //       <Menu />
+  //       {/* </Sidebar> */}
+  //     </Box>
+  //     {/* ------------------------------------------- */}
+  //     {/* Sidebar For Mobile */}
+  //     {/* ------------------------------------------- */}
+  //   </Drawer>
+  // );
 };
 
-export default Sidebar;
+export default MSidebar;
