@@ -1,21 +1,14 @@
 "use client";
+import { Grid, Box, Card, Typography, Stack } from "@mui/material";
 import Link from "next/link";
-import {
-  Grid,
-  Box,
-  Card,
-  Stack,
-  Typography,
-  ThemeProvider,
-  CssBaseline,
-} from "@mui/material";
-import AuthLogin from "./AuthLogin";
+// import Logo from "@/app/(DashboardLayout)/layout/shared/logo/Logo";
+import AuthRegister from "./AuthRegister";
 import PageContainer from "@/components/container/PageContainer";
 import SystemThemeProvider from "@/providers/SystemThemeProvider";
 
-const Login2 = () => {
+const Register2 = () => {
   const mainContent = (
-    <PageContainer title="Login" description="this is Login page">
+    <PageContainer title="Register" description="this is Register page">
       <Box
         sx={{
           position: "relative",
@@ -55,7 +48,7 @@ const Login2 = () => {
                 {/* <Logo /> */}
                 logo
               </Box>
-              <AuthLogin
+              <AuthRegister
                 subtext={
                   <Typography
                     variant="subtitle1"
@@ -69,27 +62,27 @@ const Login2 = () => {
                 subtitle={
                   <Stack
                     direction="row"
-                    spacing={1}
                     justifyContent="center"
+                    spacing={1}
                     mt={3}
                   >
                     <Typography
                       color="textSecondary"
                       variant="h6"
-                      fontWeight="500"
+                      fontWeight="400"
                     >
-                      New to Modernize?
+                      Already have an Account?
                     </Typography>
                     <Typography
                       component={Link}
-                      href="/authentication/register"
+                      href="/login"
                       fontWeight="500"
                       sx={{
                         textDecoration: "none",
                         color: "primary.main",
                       }}
                     >
-                      Create an account
+                      Sign In
                     </Typography>
                   </Stack>
                 }
@@ -100,11 +93,11 @@ const Login2 = () => {
       </Box>
     </PageContainer>
   );
-
   return (
     <SystemThemeProvider>
       {mainContent}
     </SystemThemeProvider>
   );
 };
-export default Login2;
+
+export default Register2;
