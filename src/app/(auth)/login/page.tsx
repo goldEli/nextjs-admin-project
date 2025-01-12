@@ -12,6 +12,7 @@ import {
 import AuthLogin from "./AuthLogin";
 import PageContainer from "@/components/container/PageContainer";
 import SystemThemeProvider from "@/providers/SystemThemeProvider";
+import AppTheme from "@/providers/AppTheme";
 
 const Login2 = () => {
   const mainContent = (
@@ -100,6 +101,11 @@ const Login2 = () => {
       </Box>
     </PageContainer>
   );
+  // return (
+  //   <AppTheme>
+  //     {mainContent}
+  //   </AppTheme>
+  // )
 
   return (
     <SystemThemeProvider>

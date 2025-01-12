@@ -29,10 +29,11 @@ const MSidebar = () => {
         ...scrollbarStyles,
         height: "100vh",
         // overflowY: "auto",
-        backgroundColor: "background.default",
+        backgroundColor: "background.paper",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        borderRight: "1px solid #e0e0e0",
       }}
     >
       <Typography

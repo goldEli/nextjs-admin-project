@@ -6,67 +6,124 @@ import {
   Collapse,
   Divider,
   Box,
+  ListSubheader,
+  ListItemIcon,
 } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { t } from "i18next";
 import { useMenuData } from "./useMenuData";
 import { MenuItem } from "@/type/menu";
 import useMenuStore from "@/store/sideBar/menuStore";
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import SendIcon from '@mui/icons-material/Send';
+import StarBorder from '@mui/icons-material/StarBorder';
 // import * as htmlparser2 from "htmlparser2";
 
-const VerticalMenu = () => {
-  const { menuData, toggleMenu } = useMenuData();
+export default function NestedList() {
+  const [open, setOpen] = React.useState(true);
 
-  const { setSelectedMenuItem } = useMenuStore();
-
-  const handleClick = (currentItem: MenuItem) => {
-    // setOpen(!open);
-    toggleMenu(currentItem.id);
+  const handleClick = () => {
+    setOpen(!open);
   };
 
-  const MenuListEle = menuData.map((item) => {
-    return (
-      <Box key={item.id}>
-        <ListItemButton
-          sx={{ cursor: "pointer" }}
-          onClick={() => handleClick(item)}
-        >
-          <ListItemText primary={item.title} />
-          {item.open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={item.open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            {item.children?.map((child) => {
-              return (
-                <ListItemButton
-                  onClick={() => setSelectedMenuItem(child)}
-                  key={child.id}
-                  sx={{ pl: 4 }}
-                >
-                  <ListItemText
-                    sx={{ cursor: "pointer" }}
-                    primary={child.title}
-                  />
-                </ListItemButton>
-              );
-            })}
-          </List>
-        </Collapse>
-        <Divider />
-      </Box>
-    );
-  });
-
   return (
-    <Box sx={{ height: "100%", width: "100%" }}>
-      <List component="nav" aria-labelledby="nested-list-subheader">
-        {MenuListEle}
-      </List>
-    </Box>
+    <List
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      // subheader={
+      //   <ListSubheader component="div" id="nested-list-subheader">
+      //     Nested List Items
+      //   </ListSubheader>
+      // }
+    >
+      <ListItemButton>
+        {/* <ListItemIcon>
+          <SendIcon />
+        </ListItemIcon> */}
+        <ListItemText primary="Sent mail" />
+      </ListItemButton>
+      <ListItemButton>
+        {/* <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon> */}
+        <ListItemText primary="Drafts" />
+      </ListItemButton>
+      <ListItemButton onClick={handleClick}>
+        {/* <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon> */}
+        <ListItemText primary="Inbox" />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            {/* <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon> */}
+            <ListItemText primary="Starred" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+    </List>
   );
-};
+}
 
-export default VerticalMenu;
+// const VerticalMenu = () => {
+//   const { menuData, toggleMenu } = useMenuData();
+
+//   const { setSelectedMenuItem } = useMenuStore();
+
+//   const handleClick = (currentItem: MenuItem) => {
+//     // setOpen(!open);
+//     toggleMenu(currentItem.id);
+//   };
+
+//   const MenuListEle = menuData.map((item) => {
+//     return (
+//       <Box key={item.id}>
+//         <ListItemButton
+//           sx={{ cursor: "pointer" }}
+//           onClick={() => handleClick(item)}
+//         >
+//           <ListItemText primary={item.title} />
+//           {item.open ? <ExpandLess /> : <ExpandMore />}
+//         </ListItemButton>
+//         <Collapse in={item.open} timeout="auto" unmountOnExit>
+//           <List component="div" disablePadding>
+//             {item.children?.map((child) => {
+//               return (
+//                 <ListItemButton
+//                   onClick={() => setSelectedMenuItem(child)}
+//                   key={child.id}
+//                   sx={{ pl: 4 }}
+//                 >
+//                   <ListItemText
+//                     sx={{ cursor: "pointer" }}
+//                     primary={child.title}
+//                   />
+//                 </ListItemButton>
+//               );
+//             })}
+//           </List>
+//         </Collapse>
+//         <Divider />
+//       </Box>
+//     );
+//   });
+
+//   return (
+//     <Box sx={{ height: "100%", width: "100%" }}>
+//       <List component="nav" aria-labelledby="nested-list-subheader">
+//         {MenuListEle}
+//       </List>
+//     </Box>
+//   );
+// };
+
+// export default VerticalMenu;
 
 // import { getMenu } from "@/api/menu";
 // import { useEffect } from "react";
