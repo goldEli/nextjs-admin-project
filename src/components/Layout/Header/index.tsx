@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   AppBar,
   Toolbar,
@@ -11,13 +11,12 @@ import {
   IconButton,
   Menu,
   MenuItem,
-} from '@mui/material';
-import { Globe, User } from 'lucide-react';
-import UserInfo from '@/components/UserInfo';
-import HeaderTabs from './HeaderTabs';
-import ColorModeSelect from './ColorModeSelect';
+} from "@mui/material";
+import { Globe, User } from "lucide-react";
+import UserInfo from "@/components/UserInfo";
+import HeaderTabs from "./HeaderTabs";
+import ColorModeSelect from "./ColorModeSelect";
 // import ColorModeSelect from './ColorModeSelect';
-
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -35,7 +34,7 @@ const Header = () => {
           Admin Dashboard
         </Typography> */}
         <Box sx={{ flexGrow: 1 }}></Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <IconButton
             onClick={(e) => setAnchorEl(e.currentTarget)}
             size="small"
@@ -47,12 +46,14 @@ const Header = () => {
             open={Boolean(anchorEl)}
             onClose={() => setAnchorEl(null)}
           >
-            <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
-            <MenuItem onClick={() => handleLanguageChange('zh')}>中文</MenuItem>
+            <MenuItem onClick={() => handleLanguageChange("en")}>
+              English
+            </MenuItem>
+            <MenuItem onClick={() => handleLanguageChange("zh")}>中文</MenuItem>
           </Menu>
           {/* <ColorModeSelect /> */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Avatar sx={{ bgcolor: 'primary.main' }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Avatar sx={{ bgcolor: "primary.main" }}>
               <User />
             </Avatar>
             <UserInfo />
