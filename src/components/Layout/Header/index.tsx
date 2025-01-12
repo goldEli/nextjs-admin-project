@@ -31,9 +31,10 @@ const Header = () => {
   return (
     <AppBar position="static" color="default" elevation={1}>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Admin Dashboard
-        </Typography>
+        </Typography> */}
+        <Box sx={{ flexGrow: 1 }}></Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <IconButton
             onClick={(e) => setAnchorEl(e.currentTarget)}

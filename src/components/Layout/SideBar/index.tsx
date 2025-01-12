@@ -1,4 +1,4 @@
-import { useMediaQuery, Box, Drawer } from "@mui/material";
+import { useMediaQuery, Box, Drawer, Typography } from "@mui/material";
 // import SidebarItems from "./SidebarItems";
 // import { Upgrade } from "./Updrade";
 // import { Sidebar, Logo } from "react-mui-sidebar";
@@ -28,33 +28,32 @@ const MSidebar = () => {
         flexShrink: 0,
         ...scrollbarStyles,
         height: "100vh",
-        overflowY: "auto",
+        // overflowY: "auto",
         backgroundColor: "background.default",
-        // '&::-webkit-scrollbar': {
-        //   width: 8,
-        // },
-        // '&::-webkit-scrollbar-thumb': {
-        //   backgroundColor: '#888',
-        //   borderRadius: 4,
-        // },
-        // '&::-webkit-scrollbar-thumb:hover': {
-        //   backgroundColor: '#555',
-        // },
-        // '&::-webkit-scrollbar-track': {
-        //   backgroundColor: '#f1f1f1',
-        //   borderRadius: 4,
-        // },
-        // "&::-webkit-scrollbar": {
-        //   width: "7px",
-        // },
-        // "&::-webkit-scrollbar-thumb": {
-        //   backgroundColor: "grey",
-        //   // backgroundColor: "#6B6B6B",
-        //   borderRadius: "15px",
-        // },
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <Menu />
+      <Typography
+        variant="h6"
+        component="div"
+        sx={{ height: 64, p: 2, justifyContent: "center" }}
+      >
+        Admin Dashboard
+      </Typography>
+      <Box
+        sx={{
+          flexGrow: 1,
+          overflowY: "auto",
+          minHeight: 0,
+          display: "flex",
+          flexDirection: "column",
+          ...scrollbarStyles,
+        }}
+      >
+        <Menu />
+      </Box>
     </Box>
   );
   // }
